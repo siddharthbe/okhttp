@@ -46,6 +46,8 @@ import org.bouncycastle.x509.X509V3CertificateGenerator;
 
 import static okhttp3.internal.Util.verifyAsIpAddress;
 
+import org.checkerframework.common.value.qual.StringVal;
+
 /**
  * A certificate and its private key. These are some properties of certificates that are used with
  * TLS:
@@ -211,7 +213,7 @@ public final class HeldCertificate {
     private @Nullable KeyPair keyPair;
     private @Nullable HeldCertificate signedBy;
     private int maxIntermediateCas = -1;
-    private @Nullable String keyAlgorithm;
+    private @Nullable @StringVal({"RSA", "EC"}) String keyAlgorithm;
     private int keySize;
 
     public Builder() {
