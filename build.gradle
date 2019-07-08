@@ -81,8 +81,6 @@ subprojects { project ->
   targetCompatibility = JavaVersion.VERSION_1_8
 
   apply plugin: 'org.checkerframework'
-  //apply plugin: 'com.jaredsburrows.checkerframework'
-
   apply plugin: 'checkstyle'
   checkstyleMain.exclude '**/CipherSuite.java'
   afterEvaluate {
@@ -126,7 +124,8 @@ subprojects { project ->
              'com.amazon.checkerframework.cryptopolicy.CryptoPolicyComplianceChecker',
              'org.checkerframework.checker.https.HTTPSChecker'
     ]
-    extraJavacArgs = ['-AprintVerboseGenerics', '-Xmaxerrs', '1000', '-AsuppressWarnings=cast.unsafe', "-Astubs=$rootProject.projectDir/stubs"]
+    excludeTests = true
+    extraJavacArgs = ['-Xmaxerrs', '1000', '-AsuppressWarnings=cast.unsafe', "-Astubs=$rootProject.projectDir/stubs"]
   }
 
 //  apply plugin: 'net.ltgt.errorprone'
@@ -135,7 +134,6 @@ subprojects { project ->
 //    errorprone 'com.google.errorprone:error_prone_core:2.3.3'
 
     checkerFramework 'software.amazon.checkerframework:aws-kms-compliance-checker:1.0.2'
-    implementation 'software.amazon.checkerframework:aws-kms-compliance-checker:1.0.2'
     checkerFramework 'software.amazon.checkerframework:aws-crypto-compliance-checker:1.0'
     implementation 'software.amazon.checkerframework:aws-crypto-compliance-checker:1.0'
     checkerFramework 'org.checkerframework:checker:2.+'

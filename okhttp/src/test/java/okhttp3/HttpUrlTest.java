@@ -1459,8 +1459,7 @@ public final class HttpUrlTest {
   }
 
   @Test public void fromJavaNetUrl() throws Exception {
-    @SuppressWarnings("https") URL javaNetUrl = new URL("http://username:password@host/" +
-            "path?query#fragment"); //Test Cases not that interesting
+    URL javaNetUrl = new URL("http://username:password@host/path?query#fragment");
     HttpUrl httpUrl = HttpUrl.get(javaNetUrl);
     assertThat(httpUrl.toString())
         .isEqualTo("http://username:password@host/path?query#fragment");

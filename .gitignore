@@ -1,9 +1,27 @@
-# Ignore Gradle project-specific cache directory
+.classpath
+.project
+.settings
 .gradle
+eclipsebin
 
-# Ignore Gradle build output directory
+bin
+gen
 build
+out
+lib
+generated
 
-# IDEA
-.idea/
+target
+pom.xml.*
+release.properties
+local.properties
+
+.idea
 *.iml
+*.ipr
+*.iws
+classes
+
+obj
+
+.DS_Store
