@@ -1466,8 +1466,7 @@ public final class HttpUrlTest {
   }
 
   @Test public void fromJavaNetUrlUnsupportedScheme() throws Exception {
-    @SuppressWarnings("https") URL javaNetUrl = new URL("mailto:user@example.com");
-    //Test Cases not that interesting
+    URL javaNetUrl = new URL("mailto:user@example.com");
     assertThat(HttpUrl.get(javaNetUrl)).isNull();
   }
 

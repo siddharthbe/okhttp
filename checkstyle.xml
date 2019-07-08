@@ -5,8 +5,8 @@
 
 <module name="Checker">
   <module name="SuppressWarningsFilter"/>
-  <module name="FileLength"/>
   <module name="NewlineAtEndOfFile"/>
+  <module name="FileLength"/>
   <module name="FileTabCharacter"/>
 
   <!-- Trailing spaces -->
