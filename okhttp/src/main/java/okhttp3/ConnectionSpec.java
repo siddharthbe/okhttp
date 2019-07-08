@@ -41,10 +41,10 @@ import static okhttp3.internal.Util.tlsVersionsForJavaNames;
  * defer all feature selection to the underlying SSL socket.
  *
  * <p>The configuration of each spec changes with each OkHttp release. This is annoying: upgrading
- * your OkHttp library can break connectivity to certain web servers! But it’s a necessary annoyance
- * because the TLS ecosystem is dynamic and staying up to date is necessary to stay secure. See
- * <a href="https://github.com/square/okhttp/wiki/TLS-Configuration-History">OkHttp's TLS
- * Configuration History</a> to track these changes.
+ * your OkHttp library can break connectivity to certain web servers! But it’s a necessary
+ * annoyance because the TLS ecosystem is dynamic and staying up to date is necessary to stay
+ * secure. See <a href="https://github.com/square/okhttp/wiki/TLS-Configuration-History">OkHttp's
+ * TLS Configuration History</a> to track these changes.
  */
 public final class ConnectionSpec {
 

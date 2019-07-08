@@ -430,13 +430,14 @@ public final class RealConnection extends Http2Connection.Listener implements Co
   }
 
   /**
-   * Returns a request that creates a TLS tunnel via an HTTP proxy. Everything in the tunnel request
-   * is sent unencrypted to the proxy server, so tunnels include only the minimum set of headers.
-   * This avoids sending potentially sensitive data like HTTP cookies to the proxy unencrypted.
+   * Returns a request that creates a TLS tunnel via an HTTP proxy. Everything in the tunnel
+   * request is sent unencrypted to the proxy server, so tunnels include only the minimum set of
+   * headers. This avoids sending potentially sensitive data like HTTP cookies to the proxy
+   * unencrypted.
    *
-   * <p>In order to support preemptive authentication we pass a fake “Auth Failed” response to the
-   * authenticator. This gives the authenticator the option to customize the CONNECT request. It can
-   * decline to do so by returning null, in which case OkHttp will use it as-is
+   * In order to support preemptive authentication we pass a fake “Auth Failed” response to the
+   * authenticator. This gives the authenticator the option to customize the CONNECT request. It
+   * can decline to do so by returning null, in which case OkHttp will use it as-is
    */
   private Request createTunnelRequest() throws IOException {
     Request proxyConnectRequest = new Request.Builder()

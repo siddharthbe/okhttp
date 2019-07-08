@@ -1459,14 +1459,16 @@ public final class HttpUrlTest {
   }
 
   @Test public void fromJavaNetUrl() throws Exception {
-    URL javaNetUrl = new URL("http://username:password@host/path?query#fragment");
+    @SuppressWarnings("https") URL javaNetUrl = new URL("http://username:password@host/" +
+            "path?query#fragment"); //Test Cases not that interesting
     HttpUrl httpUrl = HttpUrl.get(javaNetUrl);
     assertThat(httpUrl.toString())
         .isEqualTo("http://username:password@host/path?query#fragment");
   }
 
   @Test public void fromJavaNetUrlUnsupportedScheme() throws Exception {
-    URL javaNetUrl = new URL("mailto:user@example.com");
+    @SuppressWarnings("https") URL javaNetUrl = new URL("mailto:user@example.com");
+    //Test Cases not that interesting
     assertThat(HttpUrl.get(javaNetUrl)).isNull();
   }
 
