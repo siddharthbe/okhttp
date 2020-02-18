@@ -79,17 +79,17 @@ subprojects { project ->
   apply plugin: 'org.jetbrains.kotlin.platform.jvm'
   sourceCompatibility = JavaVersion.VERSION_1_8
   targetCompatibility = JavaVersion.VERSION_1_8
-
+  apply plugin: 'kotlin-kapt'
   apply plugin: 'org.checkerframework'
-  apply plugin: 'checkstyle'
-  checkstyleMain.exclude '**/CipherSuite.java'
-  afterEvaluate {
-    checkstyle {
-      configFile = rootProject.file('checkstyle.xml')
-      toolVersion "${versions.checkstyle}"
-      sourceSets = [project.sourceSets.main]
-    }
-  }
+  //apply plugin: 'checkstyle'
+  //checkstyleMain.exclude '**/CipherSuite.java'
+  //afterEvaluate {
+   // checkstyle {
+     // configFile = rootProject.file('checkstyle.xml')
+      //toolVersion "${versions.checkstyle}"
+      //sourceSets = [project.sourceSets.main]
+   // }
+  //}
 
   // Animal Sniffer confirms we don't use APIs not on both Java 8 and Android 5.
   apply plugin: 'ru.vyarus.animalsniffer'
@@ -120,12 +120,12 @@ subprojects { project ->
 
   checkerFramework {
     checkers = [
-             'com.amazon.checkerframework.compliance.kms.ComplianceChecker',
-             'com.amazon.checkerframework.cryptopolicy.CryptoPolicyComplianceChecker',
-             'org.checkerframework.checker.https.HTTPSChecker'
+             //'com.amazon.checkerframework.compliance.kms.ComplianceChecker',
+             //'com.amazon.checkerframework.cryptopolicy.CryptoPolicyComplianceChecker',
+             //'org.checkerframework.checker.startswith.StartsWithChecker'
     ]
-    excludeTests = true
-    extraJavacArgs = ['-Xmaxerrs', '1000', '-AsuppressWarnings=cast.unsafe', "-Astubs=$rootProject.projectDir/stubs"]
+    //excludeTests = true
+    extraJavacArgs = ['-Xmaxerrs', '1000', '-AsuppressWarnings=cast.unsafe', "-Astubs=C:\\Users\\siddh\\Desktop\\okhttp", '-Ainfer']
   }
 
 //  apply plugin: 'net.ltgt.errorprone'
@@ -133,13 +133,13 @@ subprojects { project ->
 //    errorproneJavac 'com.google.errorprone:javac:9+181-r4173-1'
 //    errorprone 'com.google.errorprone:error_prone_core:2.3.3'
 
-    checkerFramework 'software.amazon.checkerframework:aws-kms-compliance-checker:1.0.2'
-    checkerFramework 'software.amazon.checkerframework:aws-crypto-compliance-checker:1.0'
-    implementation 'software.amazon.checkerframework:aws-crypto-compliance-checker:1.0'
+    //checkerFramework 'software.amazon.checkerframework:aws-kms-compliance-checker:1.0.2'
+    //checkerFramework 'software.amazon.checkerframework:aws-crypto-compliance-checker:1.0'
+    //implementation 'software.amazon.checkerframework:aws-crypto-compliance-checker:1.0'
     checkerFramework 'org.checkerframework:checker:2.+'
     checkerFramework 'org.checkerframework:checker-qual:2.+'
-    checkerFramework 'org.checkerframework:HTTPSChecker:0.1-SNAPSHOT'
-    implementation 'org.checkerframework:HTTPSChecker:0.1-SNAPSHOT'
+    checkerFramework 'org.checkerframework:StartsWithChecker:0.1-SNAPSHOT'
+    implementation 'org.checkerframework:StartsWithChecker:0.1-SNAPSHOT'
   }
 }
 
@@ -185,7 +185,7 @@ def alpnBootVersionForPatchVersion(String javaVersion, int patchVersion) {
       return '8.1.11.v20170118'
     case 161..181:
       return '8.1.12.v20180117'
-    case 191..212:
+    case 191..222:
       return '8.1.13.v20181017'
     default:
       throw new IllegalStateException("Unexpected Java version: ${javaVersion}")

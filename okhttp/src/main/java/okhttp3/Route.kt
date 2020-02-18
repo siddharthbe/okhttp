@@ -18,6 +18,7 @@ package okhttp3
 import java.net.InetSocketAddress
 import java.net.Proxy
 
+import java.net.URL;
 /**
  * The concrete route used by a connection to reach an abstract origin server. When creating a
  * connection the client has many options:
